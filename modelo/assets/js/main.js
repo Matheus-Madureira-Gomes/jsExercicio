@@ -1,33 +1,35 @@
-function meuEscopo (){
-    const form = document.querySelector('#txtform'); 
-    form.addEventListener("submit", function (e) {
-            e.preventDefault();
-        });
+document.getElementById('formulario').addEventListener('submit', function(event) {
+    event.preventDefault(); // Previne o envio do formulário
 
-
-    const txtresultado = document.querySelector("#txtresultado");
-    const peso = document.querySelector("#txtpeso");
-    const altura = document.querySelector("#txtaltura");
-    const num1 = Number(peso);
-    const num2 = parseInt(altura);
-
-    const imc = num1 / (altura * altura);
-
-    if (imc <= 18,5){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Peso abaixo do normal </p>`
-    } else if (imc > 18,5 && imc <= 24,9){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Peso normal </p>`
-    } else if (imc >= 25 && imc <= 29,9){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Em sobrepeso </p>`
-    } else if (imc >= 30 && imc <= 34,9){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Obesidade grau 1 </p>`
-    } else if (imc >= 35 && imc <= 39,9){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Obesidade grau 2 </p>`
-    } else if (imc >= 40){
-        document.innerHTML += `<p> Imc igual a ${+imc}. Obesidade grau 3 </p>`
-    } else {
-        document.innerHTML += `<p> valor inválido </p>`
+    const peso = parseFloat(document.getElementById('peso').value);
+    const altura = parseFloat(document.getElementById('altura').value);
+    
+    // Verifica se os valores são válidos
+    if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+        alert('Por favor, insira valores válidos para peso e altura.');
+        return;
     }
 
-};
-meuEscopo();
+    // Calcula o IMC
+    const imc = peso / (altura * altura);
+
+    let resultado = '';
+    
+    // Determina a categoria com base no IMC
+    if (imc < 18.5) {
+        resultado = 'Abaixo do peso';
+    } else if (imc >= 18.5 && imc < 24.9) {
+        resultado = 'Normal';
+    } else if (imc >= 25 && imc < 29.9) {
+        resultado = 'Sobrepeso';
+    } else if (imc >= 30 && imc < 34.9) {
+        resultado = 'Obesidade grau 1';
+    } else if (imc >= 35 && imc < 39.9) {
+        resultado = 'Obesidade grau 2';
+    } else {
+        resultado = 'Obesidade grau 3';
+    }
+
+    // Exibe o resultado no elemento com id "tresultado"
+    document.getElementById('tresultado').textContent = `Seu IMC é ${imc.toFixed(2)}. Classificação: ${resultado}`;
+});

@@ -7,9 +7,6 @@
     <link rel="stylesheet" href="/modelo/assets/css/style.css">
 </head>
 <body>
-    <script src="/modelo/assets/js/main.js">
-
-    </script>
 
     <section class="container">
         <h2>Tabela IMC</h2>
@@ -39,16 +36,21 @@
         </div>
         
  
-        <form action="" id="txtform" name="txtform">
-            <label for="txtpeso">Peso</label>
-            <input type="text" id="txtpeso">
+        <form action="/" id="formulario" method="post">
+            <label for="peso">Peso</label>
+            <input type="text" id="tpeso" name="peso">
  
-            <label for="txtaltura">Altura</label>
-            <input type="text" id="txtaltura">
+            <label for="altura">Altura</label>
+            <input type="text" id="altura" name="altura">
  
             <button type="submit">Calcular</button>
-            <p id="txtresultado"> </p>
+            
         </form>
+        <div id="tresultado"> </div>
     </section>
+
+    <script src="/modelo/assets/js/main.js">
+
+    </script>
 </body>
 </html>
