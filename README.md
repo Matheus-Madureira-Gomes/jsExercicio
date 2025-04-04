@@ -1,2 +1,2 @@
-# jsExercicio
- Exercício em JavaScript curso udemy
+# Calculadora IMC
+ Programa para calcular imc e seu nível de peso corporal com JavaScritp
